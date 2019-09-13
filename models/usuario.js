@@ -31,9 +31,12 @@ var usuarioSchema = new Schema({
     required: true,
     default: 'USER_ROLE',
     enum: rolesValidos
-  }
+  },
+  google: { type: Boolean, default: false }
 });
 
-usuarioSchema.plugin(uniqueValidator, { message: 'El correo ya está siendo utilizado por otro usuario' });
+usuarioSchema.plugin(uniqueValidator, {
+  message: 'El correo ya está siendo utilizado por otro usuario'
+});
 
 module.exports = mongoose.model('Usuario', usuarioSchema);
